@@ -15,71 +15,29 @@ document.addEventListener("alpine:init", () => {
         name: "Nasi Liwet",
         img: "1.jpg",
         price: 20000,
-        rating: 4,
-        reviews: [],
       },
+
       {
         id: 2,
         name: "Nasi Bakar",
         img: "2.jpg",
         price: 12000,
-        rating: 3,
-        reviews: [],
       },
+
       {
         id: 3,
         name: "Nasi Campur",
         img: "3.jpg",
         price: 22000,
-        rating: 5,
-        reviews: [],
       },
+
       {
         id: 4,
         name: "Nasi Kuning",
         img: "4.jpg",
         price: 18000,
-        rating: 4,
-        reviews: [],
       },
     ],
-    submitReview(itemId) {
-      const name = document.querySelector(
-        `.review-form-${itemId} .review-name`
-      ).value;
-      const text = document.querySelector(
-        `.review-form-${itemId} .review-text`
-      ).value;
-      const rating = document.querySelector(
-        `.review-form-${itemId} .review-rating`
-      ).value;
-
-      // Cari item berdasarkan itemId
-      const item = this.items.find((i) => i.id === itemId);
-      if (item) {
-        // Tambahkan ulasan ke item
-        item.reviews.push({
-          name: name,
-          text: text,
-          rating: rating,
-        });
-
-        // Setelah mengirim ulasan, tampilkan ulasan baru langsung di halaman tanpa harus refresh
-        const reviewsContainer = document.querySelector(`.reviews-${itemId}`);
-        const newReview = document.createElement("div");
-        newReview.innerHTML = `
-          <div class="review">
-            <h4>${name}</h4>
-            <p>${text}</p>
-            <div class="rating">${"⭐".repeat(rating)}</div>
-          </div>
-        `;
-        reviewsContainer.appendChild(newReview);
-
-        // Reset form setelah submit
-        document.querySelector(`.review-form-${itemId}`).reset();
-      }
-    },
   }));
 
   Alpine.store("cart", {
