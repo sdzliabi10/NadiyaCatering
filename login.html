@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Nadiya Catering</title>
+    <!-- Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet" />
+    <!-- Feather Icons-->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/all.min.css">
+    <!-- My Style-->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<style>
+    body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.input-group i {
+    margin-right: 10px;
+    color: #333;
+    width: 24px;
+}
+
+.input-group input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0077ff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 15px;
+    text-align: center;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#message {
+    display: none;
+}
+
+#message p {
+    margin: 0;
+}
+
+.valid {
+    color: green;
+}
+
+.invalid {
+    color: red;
+}
+
+.login-form_middle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .label-v3 {
+        font-size: 14px;
+        line-height: 1.71;
+        letter-spacing: .5px;
+        color: #1bc64c76;
+    }
+
+    .text-battleship-grey {
+        color: #6c757d;
+    }
+
+    .btn-facebook {
+        background-color: #3b5998;
+        color: #fff;
+    }
+
+    .btn-facebook:hover {
+        background-color: #2d4373;
+    }
+
+    .btn-google {
+        background-color: #db4437;
+        color: #fff;
+    }
+
+    .btn-google:hover {
+        background-color: #c23321;
+    }
+
+    .btn-social i {
+        margin-right: 10px;
+    }
+
+</style>
+<body>
+    <!-- Login Form Start -->
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form action="index.html" method="POST">
+                <div class="input-group">
+                    <i data-feather="mail"></i>
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i data-feather="lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <input type="checkbox" onclick="togglePasswordVisibility()">Tampilkan Password
+                <button type="submit" class="btn"><b>Login</b></button>
+                <div class="login-form_middle flex align-items">
+                  <span class="label-v3 text-battleship-grey">OR</span>
+                  </div>
+                  <div class="col">
+                    <a href="https://www.facebook.com/v12.0/dialog/oauth?client_id=1894088087683867&redirect_uri=YOUR_REDIRECT_URI&scope=email" class="btn btn-facebook btn-social">
+                        <i data-feather="facebook"></i> Login with Facebook
+                    </a>
+                    <a href="#" class="btn btn-google btn-social">
+                        <i class="fa-brands fa-google"></i> Login with Google
+                  </a>
+                </div>
+                <p>Belum punya akun? <a href="register.html">Register dulu</a></p>
+            </form>
+        </div>
+        <!-- <div id="message">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="symbol" class="invalid">A <b>symbol</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+        </div> -->
+    </div>
+    <!-- Login Form End -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+    <script>
+        feather.replace();
+
+        // Toggle password visibility
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+
+       // Initialize Facebook SDK
+      //  window.fbAsyncInit = function() {
+      //       FB.init({
+      //           appId      : '1894088087683867', // Ganti dengan App ID Facebook Anda
+      //           cookie     : true,
+      //           xfbml      : true,
+      //           version    : 'v12.0'
+      //       });
+
+      //       FB.AppEvents.logPageView();   
+      //   };
+
+      //   // Load the SDK asynchronously
+      //   (function(d, s, id){
+      //       var js, fjs = d.getElementsByTagName(s)[0];
+      //       if (d.getElementById(id)) {return;}
+      //       js = d.createElement(s); js.id = id;
+      //       js.src = "https://connect.facebook.net/en_US/sdk.js";
+      //       fjs.parentNode.insertBefore(js, fjs);
+      //   }(document, 'script', 'facebook-jssdk'));
+
+      //   // Function to handle login with Facebook
+      //   function loginWithFacebook() {
+      //       FB.login(function(response) {
+      //           if (response.authResponse) {
+      //               console.log('Welcome! Fetching your information.... ');
+      //               FB.api('/me', function(response) {
+      //                   console.log('Good to see you, ' + response.name + '.');
+      //               });
+      //           } else {
+      //               console.log('User cancelled login or did not fully authorize.');
+      //           }
+      //       }, {scope: 'public_profile,email'});
+      //   }
+
+        // Show password validation message on focus
+        // document.getElementById("password").addEventListener("focus", function() {
+        //     document.getElementById("message").style.display = "block";
+        // });
+
+        // // Validate password on input
+        // document.getElementById("password").addEventListener("input", function() {
+        //     var lowerCaseLetters = /[a-z]/g;
+        //     var upperCaseLetters = /[A-Z]/g;
+        //     var numbers = /[0-9]/g;
+        //     var symbols = /[!@#\$%\^\&*\)\(+=._-]/g;
+        //     var password = document.getElementById("password").value;
+
+        //     if (password.match(lowerCaseLetters)) {
+        //         document.getElementById("letter").classList.remove("invalid");
+        //         document.getElementById("letter").classList.add("valid");
+        //     } else {
+        //         document.getElementById("letter").classList.remove("valid");
+        //         document.getElementById("letter").classList.add("invalid");
+        //     }
+
+        //     if (password.match(upperCaseLetters)) {
+        //         document.getElementById("capital").classList.remove("invalid");
+        //         document.getElementById("capital").classList.add("valid");
+        //     } else {
+        //         document.getElementById("capital").classList.remove("valid");
+        //         document.getElementById("capital").classList.add("invalid");
+        //     }
+
+        //     if (password.match(numbers)) {
+        //         document.getElementById("number").classList.remove("invalid");
+        //         document.getElementById("number").classList.add("valid");
+        //     } else {
+        //         document.getElementById("number").classList.remove("valid");
+        //         document.getElementById("number").classList.add("invalid");
+        //     }
+
+        //     if (password.match(symbols)) {
+        //         document.getElementById("symbol").classList.remove("invalid");
+        //         document.getElementById("symbol").classList.add("valid");
+        //     } else {
+        //         document.getElementById("symbol").classList.remove("valid");
+        //         document.getElementById("symbol").classList.add("invalid");
+        //     }
+
+        //     if (password.length >= 8) {
+        //         document.getElementById("length").classList.remove("invalid");
+        //         document.getElementById("length").classList.add("valid");
+        //     } else {
+        //         document.getElementById("length").classList.remove("valid");
+        //         document.getElementById("length").classList.add("invalid");
+        //     }
+        // });
+    </script>
+</body>
+</html>

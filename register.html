@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Nadiya Catering</title>
+    <!-- Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <!-- Feather Icons-->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- My Style-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f5f5f5;
+    }
+
+    .register-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .register-form h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: #333;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+    }
+
+    .input-group i {
+        margin-right: 10px;
+        color: #333;
+        width: 24px;
+    }
+
+    .input-group input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 16px;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #0077ff;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    p {
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    #message {
+        display: none;
+    }
+
+    #message p {
+        margin: 0;
+    }
+
+    .valid {
+        color: green;
+    }
+
+    .invalid {
+        color: red;
+    }
+</style>
+<body>
+    <!-- Register Form Start -->
+    <div class="register-container">
+        <div class="register-form">
+            <h2>Register</h2>
+            <form action="{{ route('register') }}" method="POST">
+                @csrf
+                <div class="input-group">
+                    <i data-feather="mail"></i>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i data-feather="lock"></i>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                </div>
+                <div id="message">
+                    <h3>Password must contain the following:</h3>
+                    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                    <p id="number" class="invalid">A <b>number</b></p>
+                    <p id="symbol" class="invalid">A <b>symbol</b></p>
+                    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                </div>
+                <button type="submit" class="btn"><b>Register</b></button>
+            </form>
+            <p>Sudah punya akun? <a href="login.html">Login</a></p>
+        </div>
+    </div>
+    <!-- Register Form End -->
+
+    <script>
+        feather.replace();
+
+        // Show password validation message on focus
+        document.getElementById("password").addEventListener("focus", function() {
+            document.getElementById("message").style.display = "block";
+        });
+
+        // Validate password on input
+        document.getElementById("password").addEventListener("input", function() {
+            var lowerCaseLetters = /[a-z]/g;
+            var upperCaseLetters = /[A-Z]/g;
+            var numbers = /[0-9]/g;
+            var symbols = /[!@#\$%\^\&*\)\(+=._-]/g;
+            var password = document.getElementById("password").value;
+
+            if (password.match(lowerCaseLetters)) {
+                document.getElementById("letter").classList.remove("invalid");
+                document.getElementById("letter").classList.add("valid");
+            } else {
+                document.getElementById("letter").classList.remove("valid");
+                document.getElementById("letter").classList.add("invalid");
+            }
+
+            if (password.match(upperCaseLetters)) {
+                document.getElementById("capital").classList.remove("invalid");
+                document.getElementById("capital").classList.add("valid");
+            } else {
+                document.getElementById("capital").classList.remove("valid");
+                document.getElementById("capital").classList.add("invalid");
+            }
+
+            if (password.match(numbers)) {
+                document.getElementById("number").classList.remove("invalid");
+                document.getElementById("number").classList.add("valid");
+            } else {
+                document.getElementById("number").classList.remove("valid");
+                document.getElementById("number").classList.add("invalid");
+            }
+
+            if (password.match(symbols)) {
+                document.getElementById("symbol").classList.remove("invalid");
+                document.getElementById("symbol").classList.add("valid");
+            } else {
+                document.getElementById("symbol").classList.remove("valid");
+                document.getElementById("symbol").classList.add("invalid");
+            }
+
+            if (password.length >= 8) {
+                document.getElementById("length").classList.remove("invalid");
+                document.getElementById("length").classList.add("valid");
+            } else {
+                document.getElementById("length").classList.remove("valid");
+                document.getElementById("length").classList.add("invalid");
+            }
+        });
+    </script>
+</body>
+</html>
