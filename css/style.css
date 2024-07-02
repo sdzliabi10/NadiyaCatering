@@ -634,6 +634,19 @@ body.dark-mode {
 
   #hamburger-menu {
     display: inline-block;
+    margin-left: auto; /* Menggeser hamburger menu ke ujung kanan */
+  }
+
+     .navbar-extra {
+    display: flex;
+    align-items: center;
+    order: 3; /* Menetapkan urutan item sesuai kebutuhan */
+    margin-left: auto; /* Menggeser item ke ujung kanan */
+  }
+
+  .navbar-extra a {
+    display: inline-block;
+    margin-left: 1rem; /* Memberikan jarak antar item */
   }
 
   .navbar .navbar-nav {
