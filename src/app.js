@@ -120,13 +120,20 @@ form.addEventListener("keyup", function () {
 //kirim data ketik tombol checkout di klik
 checkoutButton.addEventListener("click", function (e) {
   e.preventDefault();
+
+  // Mencegah scroll ke atas
+  e.stopPropagation();
+  
   const formData = new FormData(form);
   const data = new URLSearchParams(formData);
   const objData = Object.fromEntries(data);
   const message = formatMessage(objData);
 
-  // Membuat link langsung ke WhatsApp
-  const whatsappLink = `whatsapp://send?phone=6281256870373&text=${encodeURIComponent(message)}`;
+  // Mendeteksi perangkat
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const whatsappLink = isMobile
+    ? `whatsapp://send?phone=6281256870373&text=${encodeURIComponent(message)}`
+    : `https://wa.me/6281256870373?text=${encodeURIComponent(message)}`;
 
   // Mencoba membuka link WhatsApp
   window.location.href = whatsappLink;
@@ -150,6 +157,7 @@ formatMessage = (obj) => {
   return `Data Customer
   Nama: ${obj.name}
   Email: ${obj.email}
+  Alamat: ${obj.alamat}
   No HP: ${obj.phone}
   Data Pesanan
   ${JSON.parse(obj.items).map(
