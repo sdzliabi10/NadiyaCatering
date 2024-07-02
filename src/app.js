@@ -124,11 +124,25 @@ checkoutButton.addEventListener("click", function (e) {
   const data = new URLSearchParams(formData);
   const objData = Object.fromEntries(data);
   const message = formatMessage(objData);
-  window.open(
-    `https://wa.me/6281256870373?text=` + encodeURIComponent(message)
-  );
-  // console.log(objData);
+
+  // Membuat link langsung ke WhatsApp
+  const whatsappLink = `whatsapp://send?phone=6281256870373&text=${encodeURIComponent(message)}`;
+
+  // Mencoba membuka link WhatsApp
+  window.location.href = whatsappLink;
 });
+
+//checkoutButton.addEventListener("click", function (e) {
+  //e.preventDefault();
+  //const formData = new FormData(form);
+  //const data = new URLSearchParams(formData);
+  //const objData = Object.fromEntries(data);
+  //const message = formatMessage(objData);
+//window.open(
+    //`https://wa.me/6281256870373?text=` + encodeURIComponent(message)
+  //);
+  // console.log(objData);
+//});
 
 // format whatsapp
 // format whatsapp
