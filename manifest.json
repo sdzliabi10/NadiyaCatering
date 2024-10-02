@@ -1,7 +1,7 @@
 {
   "name": "Nadiya Catering App",
   "short_name": "NC App",
-  "start_url": "index.html",
+  "start_url": "https://sdzliabi10.github.io/NadiyaCatering/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
