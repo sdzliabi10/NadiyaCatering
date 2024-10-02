@@ -166,3 +166,19 @@ formatMessage = (obj) => {
   TOTAL: ${rupiah(obj.total)}
   TERIMA KASIH.`;
 };
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/serviceWorker.js").then(
+      (registration) => {
+        console.log(
+          "Service Worker terdaftar dengan sukses:",
+          registration.scope
+        );
+      },
+      (err) => {
+        console.log("Pendaftaran Service Worker gagal:", err);
+      }
+    );
+  });
+}
