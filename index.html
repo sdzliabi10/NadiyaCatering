@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nadiya Catering</title>
     <link rel="manifest" href="/manifest.json"/>
+    <meta name="apple-mobile-web-app-status-bar" content="#000000" />
     <!-- Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -552,19 +553,12 @@ window.addEventListener('click', (e) => {
       });
     });
 
-  if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/serviceWorker.js").then(
-      (registration) => {
-        console.log(
-          "Service Worker terdaftar dengan sukses:",
-          registration.scope
-        );
-      },
-      (err) => {
-        console.log("Pendaftaran Service Worker gagal:", err);
-      }
-    );
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker
+      .register("/serviceWorker.js")
+      .then((res) => console.log("service worker registered"))
+      .catch((err) => console.log("service worker not registered", err));
   });
 }
    
